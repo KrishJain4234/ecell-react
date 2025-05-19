@@ -1,0 +1,124 @@
+.App {
+  text-align: center;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 10px #f9d71c); }
+  50% { filter: drop-shadow(0 0 20px #5c5b59); }
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #2e4778;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes floatMedium {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+.animate-float-medium {
+  animation: floatMedium 6s ease-in-out infinite;
+}
+.animate-float-fast {
+  animation: floatFast 4s ease-in-out infinite;
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes bulbGlowPulse {
+  0% {
+    opacity: 0.3;
+    filter: brightness(0.8);
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2);
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.3;
+    filter: brightness(0.8);
+    transform: scale(0.95);
+  }
+}
+
+.animate-bulb-glow-pulse {
+  animation: bulbGlowPulse 0.8s ease-in-out 3;
+}
+@keyframes bulbFlicker {
+  0%, 100% {
+    filter: grayscale(1) brightness(0.4);
+  }
+  25%, 75% {
+    filter: grayscale(0.3) brightness(1.2);
+  }
+  50% {
+    filter: grayscale(0) brightness(1.6);
+  }
+}
+
+.animate-bulb-flicker {
+  animation: bulbFlicker 1s ease-in-out 2;
+}
+.hero-background {
+  background: radial-gradient(circle at center, #ffd70022, #faeeee 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    background: radial-gradient(circle at center, #ffd70022, #4f1515 70%);
+  }
+  50% {
+    background: radial-gradient(circle at center, #ffd70044, #000000 70%);
+  }
+}
