@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './App.css'; // TailwindCSS must be set up
+import './App.css'; // Make sure this file exists
+
+
 
 const words = ['Innovate', 'Create', 'Inspire'];
 const bgColors = {
@@ -11,6 +13,8 @@ const bgColors = {
 export default function App() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [phase, setPhase] = useState('text');
+  const [showMobileNav, setShowMobileNav] = useState(false);
+
 
   useEffect(() => {
     if (phase === 'text') {
@@ -36,52 +40,75 @@ export default function App() {
       className="relative flex flex-col items-center justify-center h-screen transition-all duration-700"
       style={{ backgroundColor: phase === 'text' ? bgColor : 'black'  }}
     >
-      {phase === 'bulb' && (
-  <div className="absolute top-4 left-4 flex items-center space-x-2 animate-logo">
-    <img src="/ecell.png" alt="E-Cell Logo" className="w-12 h-12" />
-    <span className="text-xl font-bold text-white font-orbitron">E-Cell</span>
-  </div>
-)}
-
+     
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/30 z-0" />
       {/* Background Money & Graph Images */}
       {phase === 'bulb' && (
   <>
     {/* Left side - Money (animated) */}
-    <img
-      src="/money.png"
-      alt="Money"
-      className="absolute left-0 bottom-0 w-[380px] opacity-100 animate-float-slow z-0"
-    />
+   {/* Left side - Money */}
+<img
+  src="/ecell-react/money.png"
+  alt="Money"
+  className="absolute left-0 bottom-0 w-[180px] sm:w-[260px] md:w-[340px] opacity-100 animate-float-slow z-0"
+/>
 
-    {/* Right side - Graph (static) */}
-    <img
-      src="/graph.png"
-      alt="Graph"
-      className="absolute right-0 bottom-0 w-[440px] opacity-90 z-0"
-    />
+{/* Right side - Graph */}
+<img
+  src="/ecell-react/graph.png"
+  alt="Graph"
+  className="absolute right-0 bottom-0 w-[220px] sm:w-[320px] md:w-[440px] opacity-90 z-0"
+/>
+
   </>
 )}
 
      {/* Show nav only after bulb phase */}
-{phase === 'bulb' && (
-  <div className="absolute top-6 right-6 z-50">
-    <div className="flex space-x-4 bg-black/40 backdrop-blur-sm px-6 py-3 rounded-full border border-cyan-400">
+     {phase === 'bulb' && (
+  <div className="absolute top-4 left-0 right-0 flex justify-between items-center px-6 w-full z-50">
+    {/* Logo on the left */}
+    <div className="flex items-center space-x-2 animate-logo">
+      <img src="/ecell-react/ecell.png" alt="E-Cell Logo" className="w-12 h-12" />
+      <span className="text-xl font-bold text-white font-orbitron">E-Cell</span>
+    </div>
+
+    {/* Desktop Nav Bar on the right */}
+    <div className="hidden sm:flex items-center space-x-6 px-6 py-2 border border-cyan-400 rounded-full bg-black/40 backdrop-blur-sm">
       {['Home', 'About Us', 'Events', 'Team', 'Gallery'].map((item) => (
         <a
           key={item}
           href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
-          className="text-white font-orbitron text-sm px-3 py-1 rounded-full border border-transparent hover:border-cyan-400 hover:text-cyan-300 transition duration-300"
+          className="text-white font-orbitron text-sm sm:text-base hover:text-cyan-300 transition duration-300"
         >
           {item}
         </a>
       ))}
     </div>
+
+    {/* Mobile Nav Button */}
+    <div className="sm:hidden">
+      <button onClick={() => setShowMobileNav(!showMobileNav)} className="text-white text-3xl">
+        &#9776;
+      </button>
+    </div>
+
+    {/* Mobile Nav Panel */}
+    {showMobileNav && (
+      <div className="absolute right-4 top-16 z-50 bg-black/90 backdrop-blur-md border border-cyan-400 rounded-lg px-6 py-4 space-y-3 sm:hidden">
+        {['Home', 'About Us', 'Events', 'Team', 'Gallery'].map((item) => (
+          <a
+            key={item}
+            href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
+            className="block text-white text-base font-orbitron hover:text-cyan-300 transition duration-300"
+          >
+            {item}
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 )}
-
-
 
       {/* Animated Words */}
       {phase === 'text' && (
@@ -96,36 +123,29 @@ export default function App() {
 
           {/* College Name Animation */}
           {/* Logo top-left with college name under it */}
-<div className="absolute top-4 left-4 z-50">
-  <div className="flex items-center space-x-2 animate-logo">
-    <span className="text-white text-4xl md:text-5x1 font-bold font-orbitron tracking-wide">
-      <span className="text-Cyan-300">E-</span><span className="text-dark pink-400">CELL</span>
-    </span>
-  </div>
-  
-  <p className="text-blue-400 text-lg md:text-xl font-semibold mt-[-2px] ml-[2px] font-orbitron tracking-wide">
-  BMSIT & M
-</p>
-
-  
+          <div className="absolute top-4 left-4 z-50 animate-logo">
+  <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold font-orbitron mb-1">
+    E-CELL
+  </h1>
+  <h2 className="text-blue-400 text-sm sm:text-base md:text-lg font-semibold font-orbitron">
+    BMSIT & M
+  </h2>
 </div>
 
 
-          {/* Glowing Bulb Animation */}
-          <div className="relative w-[340px] aspect-[0.9148/1] z-10">
-  {/* Static bulb image */}
-  <img
-  src="/bulb.png"
-  alt="Bulb"
-  className="w-[1000px] object-contain z-10 animate-bulb-flicker"
-  style={{ aspectRatio: '0.9148 / 1' }}
-/>
 
-  {/* Glowing light inside the bulb */}
+          {/* Glowing Bulb Animation */}
+          <div className="relative w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] aspect-[0.9148/1] z-10">
+  <img
+    src="/ecell-react/bulb.png"
+    alt="Bulb"
+    className="w-full h-auto object-contain z-10 animate-bulb-flicker"
+  />
   <div className="absolute inset-0 flex items-center justify-center">
     <div className="w-[60%] h-[60%] bg-yellow-400 rounded-full blur-2xl opacity-0 animate-bulb-light-pulse" />
   </div>
 </div>
+
 
         </div>
       )}
