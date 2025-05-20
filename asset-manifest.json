@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ecell-react/static/css/main.b296cbbe.css",
-    "main.js": "/ecell-react/static/js/main.30694bb5.js",
-    "static/js/453.648e89d8.chunk.js": "/ecell-react/static/js/453.648e89d8.chunk.js",
-    "index.html": "/ecell-react/index.html",
-    "main.b296cbbe.css.map": "/ecell-react/static/css/main.b296cbbe.css.map",
-    "main.30694bb5.js.map": "/ecell-react/static/js/main.30694bb5.js.map",
-    "453.648e89d8.chunk.js.map": "/ecell-react/static/js/453.648e89d8.chunk.js.map"
+    "main.css": "/heroecell/static/css/main.975fa091.css",
+    "main.js": "/heroecell/static/js/main.cc87e185.js",
+    "static/js/453.f67f8a09.chunk.js": "/heroecell/static/js/453.f67f8a09.chunk.js",
+    "index.html": "/heroecell/index.html",
+    "main.975fa091.css.map": "/heroecell/static/css/main.975fa091.css.map",
+    "main.cc87e185.js.map": "/heroecell/static/js/main.cc87e185.js.map",
+    "453.f67f8a09.chunk.js.map": "/heroecell/static/js/453.f67f8a09.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b296cbbe.css",
-    "static/js/main.30694bb5.js"
+    "static/css/main.975fa091.css",
+    "static/js/main.cc87e185.js"
   ]
 }
